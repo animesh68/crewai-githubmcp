@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./workspace_repos:/app/workspace_repos
+      # Mount codebase for hot-reloads during local development
+      - .:/app
+      # Exclude node_modules and python cache from mounting issues
+      - /app/workspace_repos
+      - /app/__pycache__
+    restart: unless-stopped

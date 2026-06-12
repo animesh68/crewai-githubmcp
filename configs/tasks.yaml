@@ -1,0 +1,53 @@
+repo_analysis_task:
+  description: >
+    Analyze the repository '{repo_owner}/{repo_name}' on branch '{branch}'.
+    Read the repository directory structure, key documentation files (like README, CONTRIBUTING, etc.), and configuration files.
+    Identify the main programming languages, frameworks, packages, and system architecture.
+    Produce a concise architectural layout.
+  expected_output: >
+    A markdown summary of the repository's structure, detected languages, frameworks, dependencies, and architectural design.
+
+security_audit_task:
+  description: >
+    Scan the files and dependencies in the repository '{repo_owner}/{repo_name}' on branch '{branch}'.
+    Look for security risks such as hardcoded secrets, API tokens, SQL injections, insecure packages, or bad coding patterns.
+    Provide a list of issues found with recommended fixes.
+  expected_output: >
+    A markdown report listing security vulnerabilities, secret exposures, dependency risks, and recommended remediations.
+
+code_generation_task:
+  description: >
+    Address the following issue/request in '{repo_owner}/{repo_name}' located locally at '{repo_dir}':
+    ---
+    {issue_description}
+    ---
+    Locate the files needing change. Write code modifications or new implementations.
+    Write or update these files using your tools on the branch '{target_branch}'.
+    Ensure you write clean, modular, typed, and well-commented code.
+  expected_output: >
+    A markdown summary listing the files modified, specific changes made, and design reasoning.
+
+unit_testing_task:
+  description: >
+    Review the code changes made on branch '{target_branch}' for repository '{repo_owner}/{repo_name}' located locally at '{repo_dir}'.
+    Create unit and integration tests to verify the correctness of the changes.
+    Write the test files using your tools in the appropriate location in the repository.
+    Cover happy paths, boundary parameters, and error states.
+  expected_output: >
+    A markdown report describing the test files created, test cases covered, and execution commands.
+
+pull_request_task:
+  description: >
+    Package the changes made on branch '{target_branch}' in '{repo_owner}/{repo_name}'.
+    Ensure all files are committed and pushed to GitHub.
+    Open a Pull Request to merge '{target_branch}' into '{branch}'.
+    Write a descriptive PR title, standard changelog, and a thorough description outlining changes and verification steps.
+  expected_output: >
+    A pull request summary including the branch name, PR URL, title, description, and changelog.
+
+final_report_task:
+  description: >
+    Synthesize all inputs from the Repository Analyzer, Security Auditor, Code Generator, Testing Agent, and PR Agent.
+    Compile a professional, executive-level Repository Update & Issue Resolution Report.
+  expected_output: >
+    A comprehensive repository update report in markdown containing the initial state, security audit, code changes, tests created, and pull request details.
