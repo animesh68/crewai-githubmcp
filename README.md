@@ -1,4 +1,4 @@
-# Autonomous AI Engineering Team Platform
+# CrewAI Agentic Automation
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
 [![CrewAI](https://img.shields.io/badge/CrewAI-000000?style=for-the-badge&logo=crewai)](https://crewai.com)
@@ -20,7 +20,7 @@ graph TD
     Orchestrator -->|Start Session| MCPClient["MCP Client Manager (Stdio)"]
     MCPClient -->|Spawn Subprocess| GithubMCP["GitHub MCP Server (npx)"]
     
-    subgraph Multi-Agent Crew (CrewAI)
+    subgraph crew["Multi-Agent Crew (CrewAI)"]
         direction TB
         Analyzer["Repository Analyzer"]
         Auditor["Security Auditor"]
@@ -126,7 +126,7 @@ graph TD
     ```bash
     python app.py
     ```
-    Access the interactive Swagger documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
+    Access the interactive API documentation at the `/docs` endpoint on your server's host IP and port.
 
 ---
 
@@ -208,7 +208,7 @@ The container automatically installs Node.js, Python, Git, and routes API reques
           "security_audit": "No issues detected...",
           "code_generation": "Modified math_ops.py...",
           "tests_generated": "Created tests/test_math_ops.py...",
-          "pull_request": "Pull Request opened at https://github.com/..."
+          "pull_request": "Pull Request opened at your repository's PR URL"
         }
       },
       "error": null
